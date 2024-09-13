@@ -11,16 +11,16 @@ dotenv.config();
 
 const PORT = process.env.PORT;
 
-// Middleware
-app.use(express.json());
-// app.use(express.urlencoded({ extended: true }));
-
 // Enable CORS for all routes
 app.use(cors({
     origin: process.env.FRONTEND_URL, // Allow all origins, or specify a list of allowed origins
     methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed methods
-    allowedHeaders: ['Content-Type', 'Authorization'], // Allowed headers
+    credentials: true, // Allowed headers
 }));
+// Middleware
+app.use(express.json());
+// app.use(express.urlencoded({ extended: true }));
+
 
 // Main Route
 app.use("/api/v1", router);
